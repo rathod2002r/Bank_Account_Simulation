@@ -1,103 +1,37 @@
-# Bank_Account_Simulation
-#BankAccount.java
-import java.util.ArrayList;
+# 💳 Bank Account Simulation (Java OOP)
 
-public class BankAccount {
-    private String accountHolder;
-    private double balance;
-    private ArrayList<String> transactions;
+This project simulates basic banking operations like deposit, withdrawal, balance check, and transaction history using **Java Object-Oriented Programming (OOP)** concepts.
 
-    public BankAccount(String accountHolder, double initialBalance) {
-        this.accountHolder = accountHolder;
-        this.balance = initialBalance;
-        this.transactions = new ArrayList<>();
-        transactions.add("Account opened with balance: ₹" + initialBalance);
-    }
+## 📌 Task Objective
+To build a **console-based banking system** where users can:
+- Create an account
+- Deposit or withdraw money
+- View balance
+- Check transaction history
 
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            transactions.add("Deposited: ₹" + amount);
-            System.out.println("₹" + amount + " deposited successfully.");
-        } else {
-            System.out.println("Invalid deposit amount.");
-        }
-    }
+## 🧱 Features
+- Deposit money
+- Withdraw money (with insufficient balance check)
+- Transaction history log
+- Balance inquiry
+- Simple console menu-driven interface
 
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            transactions.add("Withdrew: ₹" + amount);
-            System.out.println("₹" + amount + " withdrawn successfully.");
-        } else {
-            System.out.println("Invalid or insufficient funds.");
-        }
-    }
+## 💡 Key Concepts Used
+- Classes and Objects
+- Encapsulation
+- Method Overloading & Overriding
+- Constructor usage
+- Dynamic binding
+- ArrayList for storing transactions
 
-    public double getBalance() {
-        return balance;
-    }
+## 🧰 Tools & Technologies
+- Java (JDK)
+- VS Code / IntelliJ / Eclipse
+- Command Prompt / Terminal
 
-    public void showTransactionHistory() {
-        System.out.println("Transaction History for " + accountHolder + ":");
-        for (String t : transactions) {
-            System.out.println("- " + t);
-        }
-    }
-}
+## ▶️ How to Run the Program
 
-#Main.java
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter account holder name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter initial deposit amount: ");
-        double initialDeposit = scanner.nextDouble();
-
-        BankAccount account = new BankAccount(name, initialDeposit);
-
-        boolean exit = false;
-
-        while (!exit) {
-            System.out.println("\n--- Bank Menu ---");
-            System.out.println("1. Deposit");
-            System.out.println("2. Withdraw");
-            System.out.println("3. Check Balance");
-            System.out.println("4. View Transactions");
-            System.out.println("5. Exit");
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter amount to deposit: ");
-                    double deposit = scanner.nextDouble();
-                    account.deposit(deposit);
-                    break;
-                case 2:
-                    System.out.print("Enter amount to withdraw: ");
-                    double withdraw = scanner.nextDouble();
-                    account.withdraw(withdraw);
-                    break;
-                case 3:
-                    System.out.println("Current Balance: ₹" + account.getBalance());
-                    break;
-                case 4:
-                    account.showTransactionHistory();
-                    break;
-                case 5:
-                    exit = true;
-                    System.out.println("Thank you for using the bank app.");
-                    break;
-                default:
-                    System.out.println("Invalid option.");
-            }
-        }
-
-        scanner.close();
-    }
-}
+1. Clone or download this repository.
+2. Compile the files:
+   ```bash
+   javac BankAccount.java Main.java
